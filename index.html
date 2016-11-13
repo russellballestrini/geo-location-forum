@@ -3,22 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <title>Unturf - Chat Locally</title>
+<meta name="description" content="Chat with people nearby. Secure, ">
+<meta name="keywords" content="chat, local talk, forum">
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
       <!-- Remarkbox - Let your readers communicate with you -->
-      <script type="text/javascript" src="https://demo.remarkbox.com/static/js/iframe-resizer/iframeResizer.min.js"></script>
+      <script type="text/javascript" src="https://app.unturf.com/static/js/iframe-resizer/iframeResizer.min.js"></script>
+	<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-87339713-1', 'auto');
+      ga('send', 'pageview');
+    
+    </script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script type="text/javascript">
 	  var thread_uri = 'Your longitude and latitude are N/A';//assigns the thread uri
 	  $( document ).ready(function() {
-		  $('.iframe').html('<img src="images/loading_icon.gif" style="width:200px">');
-		  $('.address').html('Chat with people within one mile of you');
+		  $('.iframe').html('<img src="images/icon-loading.gif" style="width:80px; margin:50px">');
+		  $('.address').html('Chat with people nearby');
 	  });
+	  //The first decimal place is worth up to 11.1 km - The second decimal place is worth up to 1.1 km: - The third decimal place is worth up to 110 m - src: http://gizmodo.com/how-precise-is-one-degree-of-longitude-or-latitude-1631241162 
 	  navigator.geolocation.getCurrentPosition(function(position) {//uses geolocation to get the coords
-			var latitude = Math.floor(Math.round(position.coords.latitude*100));//rounds to the nearest thousand
-			var longitude = Math.floor(Math.round(position.coords.longitude*100));  
-			window.oldlongitude = Math.floor(Math.round(position.coords.longitude*100));  
-			window.oldlatitude = Math.floor(Math.round(position.coords.latitude*100));  
+			var latitude = Math.floor(Math.round(position.coords.latitude*10));//11 km
+			var longitude = Math.floor(Math.round(position.coords.longitude*10));  
+			window.oldlongitude = Math.floor(Math.round(position.coords.longitude*10));  
+			window.oldlatitude = Math.floor(Math.round(position.coords.latitude*10));  
 			//get the address 
 			var lat = parseFloat(position.coords.latitude);
             var lng = parseFloat(position.coords.longitude);
@@ -32,10 +47,10 @@
                 }  
             });
 			//info for bottom of page
-			thread_results = 'The latitude of this is feed is '+position.coords.latitude+' and the longitude is '+ position.coords.longitude +'. You are at ';//for testing purposes
+			thread_results = 'The latitude of this is feed is '+position.coords.latitude+' and the longitude is '+ position.coords.longitude +'. You are currently at ';//for testing purposes
 			thread_uri = latitude+'_'+longitude;//assigns the coords to the thread
 			$('.results').html(thread_results);//for testing purposes
-			$('.iframe').html('<iframe id="remarkbox" src="https://demo.remarkbox.com/embed?thread_uri=' + thread_uri + '" title="remarkbox" width="100%" style="width: 100% !important; border: none !important; overflow: hidden !important;" allowtransparency="true" scrolling="no" horizontalscrolling="no" verticalscrolling="no" tabindex="0" seamless></iframe>');
+			$('.iframe').html('<iframe id="remarkbox" src="https://app.unturf.com/embed?thread_uri=' + thread_uri + '" title="remarkbox" width="100%" style="width: 100% !important; border: none !important; overflow: hidden !important;" allowtransparency="true" scrolling="no" horizontalscrolling="no" verticalscrolling="no" tabindex="0" seamless></iframe>');
 			iFrameResize( [], document.getElementById('remarkbox') );//loads the remarkbox api
 		 },
 		function (error) { 
@@ -46,10 +61,10 @@
 	  //gets the users current location
 	  var watchID = navigator.geolocation.watchPosition(function(position) {
 		  $('.watch_user').html(position.coords.latitude +' latitude and ' + position.coords.longitude+' longitude');
-		 	var updated_latitude = Math.floor(Math.round(position.coords.latitude*100));//rounds to the nearest thousand
-			var updated_longitude = Math.floor(Math.round(position.coords.longitude*100));  
+		 	var updated_latitude = Math.floor(Math.round(position.coords.latitude*10));//rounds to the nearest thousand
+			var updated_longitude = Math.floor(Math.round(position.coords.longitude*10));  
 			if(updated_latitude != oldlatitude || updated_longitude != oldlongitude){
-				$('.updatedresults').html('<br><br><div class="alert alert-info"><a href="https://flocksy.com/geo/">Load new comments</a></div>');
+				$('.updatedresults').html('<br><br><div class="alert alert-info" style="margin:30px 0; clear:both"><a href="/">Load new comments</a></div>');
 			} else {
 			}		 
 	});
@@ -75,11 +90,6 @@
     <div class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class ="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button> 
                 <a class="navbar-brand" href="#" style="font-family: 'Nunito', sans-serif; font-size:33px"><img src="images/icon-gray.png" style="height:26px; display:inline-block;"> unturf</a>
             </div>
             <div class="navbar-collapse collapse" style="font-family: 'Dosis', sans-serif;">
@@ -102,13 +112,13 @@
                         <div class="navbar-header" style="background: none; border-bottom:#C4C4C4 solid thin; font-family: 'Dosis', sans-serif; color:#696969; font-size:24px; padding:10px 0 4px 0; ">
                         <span class="address"></span>
       					</div>
-                        <div class="navbar-header" style="background: none; width:100%; font-family: 'Dosis', sans-serif; color:#696969; font-size:17px; padding:10px 0 4px 0; ">
-                        Secure, anonymous and local 
+                        <div class="navbar-header" style="background: none; width:100%; font-family: 'Dosis', sans-serif; color:#696969; font-size:21px; padding:6px 0 4px 0; ">
+                        Secure, anonymous and fun 
       					</div>
                   <div class="row marketing" style="padding:20px">
                         <div class="panel-body">
-                        <span class="updatedresults"></span>
-                        <div class="iframe"></div>
+                            <div class="updatedresults"></div>
+                            <div class="iframe"></div>
                             <div class="clearfix"></div>
                         </div>
                     </div>
@@ -123,7 +133,7 @@
         
                     <div class="footer-left">
         
-                        <h3 style="font-family: 'Nunito', sans-serif; font-size:33px; color:#414141">unturf</h3>
+                        <h3 style="font-family: 'Nunito', sans-serif; font-size:33px; color:#414141"><img src="images/icon.png" style="height:77px; margin:0 0 12px"></h3>
         
                         <p class="footer-company-name">unturf &copy; 2016</p>
                     </div>
