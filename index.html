@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Unturf - Chat Locally</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+      <!-- Remarkbox - Let your readers communicate with you -->
+      <script type="text/javascript" src="https://demo.remarkbox.com/static/js/iframe-resizer/iframeResizer.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script type="text/javascript">
+	  var thread_uri = 'Your longitude and latitude are N/A';//assigns the thread uri
+	  $( document ).ready(function() {
+		  $('.iframe').html('<img src="images/loading_icon.gif" style="width:200px">');
+		  $('.address').html('Chat with people within one mile of you');
+	  });
+	  navigator.geolocation.getCurrentPosition(function(position) {//uses geolocation to get the coords
+			var latitude = Math.floor(Math.round(position.coords.latitude*100));//rounds to the nearest thousand
+			var longitude = Math.floor(Math.round(position.coords.longitude*100));  
+			window.oldlongitude = Math.floor(Math.round(position.coords.longitude*100));  
+			window.oldlatitude = Math.floor(Math.round(position.coords.latitude*100));  
+			//get the address 
+			var lat = parseFloat(position.coords.latitude);
+            var lng = parseFloat(position.coords.longitude);
+            var latlng = new google.maps.LatLng(lat, lng);
+            var geocoder = geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (results[1]) {
+                        $('.address').html('Chat with people in '+results[1].formatted_address);
+					}
+                }  
+            });
+			//info for bottom of page
+			thread_results = 'The latitude of this is feed is '+position.coords.latitude+' and the longitude is '+ position.coords.longitude +'. You are at ';//for testing purposes
+			thread_uri = latitude+'_'+longitude;//assigns the coords to the thread
+			$('.results').html(thread_results);//for testing purposes
+			$('.iframe').html('<iframe id="remarkbox" src="https://demo.remarkbox.com/embed?thread_uri=' + thread_uri + '" title="remarkbox" width="100%" style="width: 100% !important; border: none !important; overflow: hidden !important;" allowtransparency="true" scrolling="no" horizontalscrolling="no" verticalscrolling="no" tabindex="0" seamless></iframe>');
+			iFrameResize( [], document.getElementById('remarkbox') );//loads the remarkbox api
+		 },
+		function (error) { 
+		if (error.code == error.PERMISSION_DENIED)
+				  $('.results').html('N/A');
+				  $('.iframe').html('You need to turn location services on to use this service.');
+		});
+	  //gets the users current location
+	  var watchID = navigator.geolocation.watchPosition(function(position) {
+		  $('.watch_user').html(position.coords.latitude +' latitude and ' + position.coords.longitude+' longitude');
+		 	var updated_latitude = Math.floor(Math.round(position.coords.latitude*100));//rounds to the nearest thousand
+			var updated_longitude = Math.floor(Math.round(position.coords.longitude*100));  
+			if(updated_latitude != oldlatitude || updated_longitude != oldlongitude){
+				$('.updatedresults').html('<br><br><div class="alert alert-info"><a href="https://flocksy.com/geo/">Load new comments</a></div>');
+			} else {
+			}		 
+	});
+	$( document ).ready(function() {//refreshes where the user goes
+		 window.setTimeout(watchID, 6000);
+	});
+			
+       // thread_uri = (window.location != window.parent.location) ? document.referrer: document.locatio n;
+      </script>
+<link href="https://fonts.googleapis.com/css?family=Dosis|Muli|Nunito" rel="stylesheet">
+<link href="css/footer-distributed-with-address-and-phones.css" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+    <div class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class ="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button> 
+                <a class="navbar-brand" href="#" style="font-family: 'Nunito', sans-serif; font-size:33px"><img src="images/icon-gray.png" style="height:26px; display:inline-block;"> unturf</a>
+            </div>
+            <div class="navbar-collapse collapse" style="font-family: 'Dosis', sans-serif;">
+                <ul class="nav navbar-nav navbar-right ">
+                    <li class="active"><a href="#">Feed</a></li>
+                    <li><a href="#about" >About</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <!-- NAVBAR CODE END -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1" style="font-family: 'Dosis', sans-serif;">
+                <!-- TWEET WRAPPER START -->
+                <div class="twt-wrapper">
+                    <div class="panel panel-info" style="border: none">
+                        <div class="navbar-header" style="background: none; border-bottom:#C4C4C4 solid thin; font-family: 'Dosis', sans-serif; color:#696969; font-size:24px; padding:10px 0 4px 0; ">
+                        <span class="address"></span>
+      					</div>
+                        <div class="navbar-header" style="background: none; width:100%; font-family: 'Dosis', sans-serif; color:#696969; font-size:17px; padding:10px 0 4px 0; ">
+                        Secure, anonymous and local 
+      					</div>
+                  <div class="row marketing" style="padding:20px">
+                        <div class="panel-body">
+                        <span class="updatedresults"></span>
+                        <div class="iframe"></div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                    <h6 style="color:#929292; line-height:20px"><span class="results"></span> <span class="watch_user"></span></h6>
+
+
+            </div>
+        </div>  
+    </div>
+                <footer class="footer-distributed" style=" border-top:thin solid #BBBBBB; padding:300px 40px; font-family: 'Dosis', sans-serif; background: none; color:#3F3F3F"><a name="about"></a>
+        
+                    <div class="footer-left">
+        
+                        <h3 style="font-family: 'Nunito', sans-serif; font-size:33px; color:#414141">unturf</h3>
+        
+                        <p class="footer-company-name">unturf &copy; 2016</p>
+                    </div>
+        
+                    <div class="footer-center">
+        
+                        <div style="color:#414141">
+                            <i class="fa fa-map-marker"></i>
+                            <p><span>13 Golden Street</span> New London, CT</p>
+                        </div>
+        
+                        <div>
+                        </div>
+        
+                        <div>
+                            <i class="fa fa-envelope"></i>
+                            <p><a href="mailto:feedback@unturf.com" style="color:#414141">feedback@unturf.com</a></p>
+                        </div>
+        
+                    </div>
+        
+                    <div class="footer-right">
+        
+                        <p class="footer-company-about" style="color:#414141">
+                            <h4 style="color:#414141">About the company</h4>
+                            Unturf allows you to chat with people in your area. Discover new people, things and ideas.<br><br>Created by Sam Ryan and Russell Ballestrini </p>
+                    </div>
+        
+                </footer>
+
+</body>
+</html>
