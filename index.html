@@ -1,10 +1,12 @@
 <!doctype html>
 <html>
 <head>
+<title>chat with people nearby | unturf</title>
+
 <meta charset="UTF-8">
-<title>Unturf - Chat Locally</title>
-<meta name="description" content="Chat with people nearby. Secure, ">
+<meta name="description" content="Chat with people nearby. Secure and Anonymous.">
 <meta name="keywords" content="chat, local talk, forum">
+
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +27,7 @@
       <script type="text/javascript">
 	  var thread_uri = 'Your longitude and latitude are N/A';//assigns the thread uri
 	  $( document ).ready(function() {
-		  $('.iframe').html('<img src="images/icon-loading.gif" style="width:80px; margin:50px">');
+		  $('.iframe').html('<center><img src="images/icon-loading.gif" style="width: 40px;"/><br/>detecting location ...</center>');
 		  $('.address').html('Chat with people nearby');
 	  });
 	  //The first decimal place is worth up to 11.1 km - The second decimal place is worth up to 1.1 km: - The third decimal place is worth up to 110 m - src: http://gizmodo.com/how-precise-is-one-degree-of-longitude-or-latitude-1631241162 
@@ -90,7 +92,7 @@
     <div class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#" style="font-family: 'Nunito', sans-serif; font-size:33px"><img src="images/icon-gray.png" style="height:26px; display:inline-block;"> unturf</a>
+                <a class="navbar-brand" href="https://unturf.com" style="font-family: 'Nunito', sans-serif; font-size: 2.4em;"><img src="images/icon-gray.png" style="height:26px; display:inline-block;"> unturf</a>
             </div>
             <div class="navbar-collapse collapse" style="font-family: 'Dosis', sans-serif;">
                 <ul class="nav navbar-nav navbar-right ">
@@ -129,11 +131,13 @@
             </div>
         </div>  
     </div>
-                <footer class="footer-distributed" style=" border-top:thin solid #BBBBBB; padding:300px 40px; font-family: 'Dosis', sans-serif; background: none; color:#3F3F3F"><a name="about"></a>
+                <footer class="footer-distributed" style=" border-top:thin solid #BBBBBB; padding: 300px 40px; font-family: 'Dosis', sans-serif; background: none; color:#3F3F3F"><a name="about"></a>
         
                     <div class="footer-left">
         
+                        <a href="https://unturf.com">
                         <h3 style="font-family: 'Nunito', sans-serif; font-size:33px; color:#414141"><img src="images/icon.png" style="height:77px; margin:0 0 12px"></h3>
+                        </a>
         
                         <p class="footer-company-name">unturf &copy; 2016</p>
                     </div>
@@ -159,7 +163,7 @@
         
                         <p class="footer-company-about" style="color:#414141">
                             <h4 style="color:#414141">About the company</h4>
-                            Unturf allows you to chat with people in your area. Discover new people, things and ideas.<br><br>Created by Sam Ryan and Russell Ballestrini </p>
+                            Chat with people in your area using the unturf app. Discover new people, things, and ideas.<br><br>Created by Sam Ryan and Russell Ballestrini </p>
                     </div>
         
                 </footer>
