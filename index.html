@@ -1,10 +1,10 @@
 <!doctype html>
 <html>
 <head>
-<title>chat with people nearby | unturf</title>
+<title>Share notes with people nearby | unturf</title>
 
 <meta charset="UTF-8">
-<meta name="description" content="Read and write notes to people nearby with people nearby. Secure and Anonymous.">
+<meta name="description" content="Share notes with people nearby. Secure and Anonymous.">
 <meta name="keywords" content="chat, local, notes, talk, forum">
 
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -28,7 +28,7 @@
 	  var thread_uri = 'Your longitude and latitude are N/A';//assigns the thread uri
 	  $( document ).ready(function() {
 		  $('.iframe').html('<center><br /><br /><img src="images/icon-loading.gif" style="width: 40px;"/><br/>detecting location ...<br /><br /><br /><br /></center>');
-		  $('.address').html('Read and write notes with people nearby');
+		  $('.address').html('Share notes with people nearby');
 	  });
 	  //The first decimal place is worth up to 11.1 km - The second decimal place is worth up to 1.1 km: - The third decimal place is worth up to 110 m - src: http://gizmodo.com/how-precise-is-one-degree-of-longitude-or-latitude-1631241162 
 	  navigator.geolocation.getCurrentPosition(function(position) {//uses geolocation to get the coords
@@ -162,7 +162,7 @@
             <p class="footer-company-about" style="color:#414141">
                 <h2 style="color:#414141">About unturf</h2>
                 <br />
-                The unturf app lets you read and write notes with people nearby.
+                The unturf app lets you share notes with people nearby.
                 <br>
                 Discover new places, people, and ideas!
                 <br>
