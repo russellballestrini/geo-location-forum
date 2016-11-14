@@ -4,8 +4,8 @@
 <title>chat with people nearby | unturf</title>
 
 <meta charset="UTF-8">
-<meta name="description" content="Chat with people nearby. Secure and Anonymous.">
-<meta name="keywords" content="chat, local talk, forum">
+<meta name="description" content="Read and write notes to people nearby with people nearby. Secure and Anonymous.">
+<meta name="keywords" content="chat, local, notes, talk, forum">
 
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
@@ -28,7 +28,7 @@
 	  var thread_uri = 'Your longitude and latitude are N/A';//assigns the thread uri
 	  $( document ).ready(function() {
 		  $('.iframe').html('<center><br /><br /><img src="images/icon-loading.gif" style="width: 40px;"/><br/>detecting location ...<br /><br /><br /><br /></center>');
-		  $('.address').html('Chat with people nearby');
+		  $('.address').html('Read and write notes with people nearby');
 	  });
 	  //The first decimal place is worth up to 11.1 km - The second decimal place is worth up to 1.1 km: - The third decimal place is worth up to 110 m - src: http://gizmodo.com/how-precise-is-one-degree-of-longitude-or-latitude-1631241162 
 	  navigator.geolocation.getCurrentPosition(function(position) {//uses geolocation to get the coords
@@ -44,7 +44,7 @@
             geocoder.geocode({ 'latLng': latlng }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
                     if (results[1]) {
-                        $('.address').html('Chat with people in '+results[1].formatted_address);
+                        $('.address').html('Notes in '+results[1].formatted_address);
 					}
                 }  
             });
@@ -112,11 +112,11 @@
                 <!-- TWEET WRAPPER START -->
                 <div class="twt-wrapper">
                     <div class="panel panel-info" style="border: none">
-                        <div style="font-family: 'Dosis', sans-serif; color:#696969; font-size: 2.3em; padding-left: 14px; ">
+                        <div style="font-family: 'Dosis', sans-serif; color:#696969; font-size: 2.2em; padding-left: 14px; ">
                           <span class="address"></span>
                         </div>
-                        <div style="font-family: 'Dosis', sans-serif; color:#696969; font-size: 1.8em; padding-left: 14px; ">
-                          Secure, anonymous and fun 
+                        <div style="font-family: 'Dosis', sans-serif; color:#696969; font-size: 1.6em; padding-left: 14px; ">
+                          Secure, anonymous, and fun 
       		        </div>
 
                         <div class="row marketing" style="padding-left: 20px; padding-right: 20px;">
@@ -161,14 +161,16 @@
     
             <p class="footer-company-about" style="color:#414141">
                 <h2 style="color:#414141">About unturf</h2>
+                <br />
+                The unturf app lets you read and write notes with people nearby.
+                <br>
+                Discover new places, people, and ideas!
+                <br>
+                <br>
                 The idea for unturf was formed August 11th, 2016 after playing PokemonGo. 
-                <br />
-                <br />
+                <br>
+                <br>
                 We implemented unturf during the <a href="http://northeasthackathon.com/" target="_blank" >North East Hackathon</a> at the <a href="http://www.spark.coop/" target="_blank">Spark Makerspace</a> in New London, Connecticut on November 11th, 2016.
-                <br />
-                <br />
-             
-                The unturf app lets you chat with people nearby in your area. It is a forum of place: discover, meet, and share ideas!
                 <br>
                 <br>
                 <h2 style="color:#414141">About the team</h2>
