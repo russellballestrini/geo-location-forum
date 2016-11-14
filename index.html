@@ -27,7 +27,7 @@
       <script type="text/javascript">
 	  var thread_uri = 'Your longitude and latitude are N/A';//assigns the thread uri
 	  $( document ).ready(function() {
-		  $('.iframe').html('<center><img src="images/icon-loading.gif" style="width: 40px;"/><br/>detecting location ...</center>');
+		  $('.iframe').html('<center><img src="images/icon-loading.gif" style="width: 40px;"/><br/>detecting location ...<br /><br /><br /><br /></center>');
 		  $('.address').html('Chat with people nearby');
 	  });
 	  //The first decimal place is worth up to 11.1 km - The second decimal place is worth up to 1.1 km: - The third decimal place is worth up to 110 m - src: http://gizmodo.com/how-precise-is-one-degree-of-longitude-or-latitude-1631241162 
@@ -88,11 +88,12 @@
 
 </head>
 
-<body>
+<body style="background-color: #fbfbfb;">
+
     <div class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="https://unturf.com" style="font-family: 'Nunito', sans-serif; font-size: 2.4em;"><img src="images/icon-gray.png" style="height:26px; display:inline-block;"> unturf</a>
+                <a class="navbar-brand" href="https://unturf.com" style="font-family: 'Nunito', sans-serif; font-size: 2.3em;"><img src="images/icon-gray.png" style="height:26px; display: inline-block; padding-right: 10px;">unturf</a> <b style="font-family: 'Dosis', sans-serif; opacity: .5;">beta</b>
             </div>
             <div class="navbar-collapse collapse" style="font-family: 'Dosis', sans-serif;">
                 <ul class="nav navbar-nav navbar-right ">
@@ -111,71 +112,73 @@
                 <!-- TWEET WRAPPER START -->
                 <div class="twt-wrapper">
                     <div class="panel panel-info" style="border: none">
-                        <div class="navbar-header" style="background: none; border-bottom:#C4C4C4 solid thin; font-family: 'Dosis', sans-serif; color:#696969; font-size:24px; padding:10px 0 4px 0; ">
-                        <span class="address"></span>
-      					</div>
-                        <div class="navbar-header" style="background: none; width:100%; font-family: 'Dosis', sans-serif; color:#696969; font-size:21px; padding:6px 0 4px 0; ">
-                        Secure, anonymous and fun 
-      					</div>
-                  <div class="row marketing" style="padding:20px">
-                        <div class="panel-body">
-                            <div class="updatedresults"></div>
-                            <div class="iframe"></div>
-                            <div class="clearfix"></div>
+                        <div style="font-family: 'Dosis', sans-serif; color:#696969; font-size: 2.3em; padding-left: 14px; ">
+                          <span class="address"></span>
+                        </div>
+                        <div style="font-family: 'Dosis', sans-serif; color:#696969; font-size: 1.8em; padding-left: 14px; ">
+                          Secure, anonymous and fun 
+      		        </div>
+
+                        <div class="row marketing" style="padding-left: 20px; padding-right: 20px;">
+                                <div class="updatedresults"></div>
+                                <div class="iframe"></div>
+                                <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>
-                    <h6 style="color:#929292; line-height:20px"><span class="results"></span> <span class="watch_user"></span></h6>
-            </div>
-        </div>  
+                <center>
+                  <h6 style="color:#929292; line-height: 20px"><span class="results"></span> <span class="watch_user"></span></h6>
+                </center>
+            </div>  
+        </div>
     </div>
-                <footer class="footer-distributed" style=" border-top:thin solid #BBBBBB; padding: 200px 20px; font-family: 'Dosis', sans-serif; background: none; color:#3F3F3F"><a name="about"></a>
-        
-                    <div class="footer-left">
 
-                        <br />
-                        <a href="https://unturf.com">
-                        <img src="images/icon.png"></a>
-                        <p class="footer-company-name">unturf &copy; 2016</p>
-
-                        <br />
-                        <br />
-                        <div style="color:#414141;">
-                            13 Golden Street, New London, CT</p>
-                        </div>
+    <footer class="footer-distributed" style=" border-top: thin solid #BBBBBB; padding: 200px 20px; font-family: 'Dosis', sans-serif; background-color: #eeeeee; color:#3F3F3F"><a name="about"></a>
     
-                        <br />
-                        <br />
-                        <div>
-                            <p><a href="mailto:feedback@unturf.com" style="color:#414141">feedback@unturf.com</a></p>
-                        </div>
-                        <br />
-                        <br />
-                    </div>
-        
-                    <div class="footer-right">
-        
-                        <p class="footer-company-about" style="color:#414141">
-                            <h2 style="color:#414141">About unturf</h2>
-                            The idea for unturf was formed August 11th, 2016 after playing PokemonGo. 
-                            <br />
-                            <br />
-                            We implemented unturf during the <a href="http://northeasthackathon.com/" target="_blank" >North East Hackathon</a> at the <a href="http://www.spark.coop/" target="_blank">Spark Makerspace</a> in New London, Connecticut on November 11th, 2016.
-                            <br />
-                            <br />
-                         
-                            The unturf app lets you chat with people nearby in your area. It is a forum of place: discover, meet, and share ideas!
-                            <br>
-                            <br>
-                            <h2 style="color:#414141">About the team</h2>
-                            <ul>
-                              <li>Sam Ryan</li>
-                              <li><a href="http://russell.ballestrini.net/about" target="_blank">Russell Ballestrini</a></li>
-                            <ul>
-                        </p>
-                    </div>
-        
-                </footer>
+        <div class="footer-left">
+
+            <br />
+            <a href="https://unturf.com">
+            <img src="images/icon.png"></a>
+            <p class="footer-company-name">unturf &copy; 2016</p>
+
+            <br />
+            <br />
+            <div style="color:#414141;">
+                13 Golden Street, New London, CT</p>
+            </div>
+    
+            <br />
+            <br />
+            <div>
+                <p><a href="mailto:feedback@unturf.com" style="color:#414141">feedback@unturf.com</a></p>
+            </div>
+            <br />
+            <br />
+        </div>
+    
+        <div class="footer-right">
+    
+            <p class="footer-company-about" style="color:#414141">
+                <h2 style="color:#414141">About unturf</h2>
+                The idea for unturf was formed August 11th, 2016 after playing PokemonGo. 
+                <br />
+                <br />
+                We implemented unturf during the <a href="http://northeasthackathon.com/" target="_blank" >North East Hackathon</a> at the <a href="http://www.spark.coop/" target="_blank">Spark Makerspace</a> in New London, Connecticut on November 11th, 2016.
+                <br />
+                <br />
+             
+                The unturf app lets you chat with people nearby in your area. It is a forum of place: discover, meet, and share ideas!
+                <br>
+                <br>
+                <h2 style="color:#414141">About the team</h2>
+                <ul>
+                  <li>Sam Ryan</li>
+                  <li><a href="http://russell.ballestrini.net/about" target="_blank">Russell Ballestrini</a></li>
+                <ul>
+            </p>
+        </div>
+    </footer>
 
 </body>
 </html>
